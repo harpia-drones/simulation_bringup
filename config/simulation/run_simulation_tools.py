@@ -10,16 +10,13 @@ commands = [
     "cd /root/PX4-Autopilot && PX4_GZ_WORLD=FRTL25world make px4_sitl gz_harpia",
 
     # Start QGroundControl
-    "cd /root/harpia_ws/ && runuser -l harpia -c 'DISPLAY=:0 /usr/local/bin/QGroundControl.AppImage'",
+    'cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=:$\{DISPLAY\} /usr/local/bin/QGroundControl.AppImage"',
 
     # Start ros_gz_bridge
     "ros2 launch simulation_bringup ros_gz_bridge.launch.py",
 
     # Open image view for each camera
     "cd /root/harpia_ws && ros2 run rqt_image_view rqt_image_view",
-
-    # Run image processor
-    # "cd /root/harpia_ws && ros2 run image_processor bars_tracking",
 ]
 
 # Name of the tmux session
