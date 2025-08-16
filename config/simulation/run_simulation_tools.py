@@ -10,7 +10,7 @@ commands = [
     "cd /root/PX4-Autopilot && PX4_GZ_WORLD=FRTL25world make px4_sitl gz_harpia",
 
     # Start QGroundControl
-    'cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=:$\{DISPLAY\} /usr/local/bin/QGroundControl.AppImage"',
+    'cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=:${DISPLAY} /usr/local/bin/QGroundControl.AppImage"',
 
     # Start ros_gz_bridge
     "ros2 launch simulation_bringup ros_gz_bridge.launch.py",
