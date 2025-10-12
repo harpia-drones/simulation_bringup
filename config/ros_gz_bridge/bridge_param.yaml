@@ -53,3 +53,11 @@
   ros_type_name: "sensor_msgs/msg/CameraInfo"
   gz_type_name: "gz.msgs.CameraInfo"
   direction: "GZ_TO_ROS"
+
+# Lidar Downward
+- ros_topic_name: "lidar/down"
+  gz_topic_name: "lidar"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  lazy: true
+  direction: "GZ_TO_ROS"
