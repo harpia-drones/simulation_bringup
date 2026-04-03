@@ -9,7 +9,7 @@ WINDOW_2="sim-tools"
 # Commands to run in each pane
 START_MICROXRCE_AGENT="MicroXRCEAgent udp4 -p 8888"
 START_QGC='cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=${DISPLAY} /usr/local/bin/QGroundControl.AppImage"'
-START_PX4='cd /root/PX4-Autopilot && make px4_sitl gz_harpia_eletroquad26_m1'
+START_PX4='cd /root/PX4-Autopilot && PX4_GZ_WORLD=eletroquad26_m2 make px4_sitl gz_harpia_eletroquad26_m2'
 START_BRIDGE="ros2 launch simulation_bringup ros_gz_bridge.launch.py"
 
 # Check if the tmux session already exists

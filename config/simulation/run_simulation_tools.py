@@ -7,7 +7,7 @@ commands = [
     "MicroXRCEAgent udp4 -p 8888",
 
     # Start PX4 SITL simulation
-    "cd /root/PX4-Autopilot && PX4_GZ_WORLD=FRTL25world make px4_sitl gz_harpia",
+    "cd /root/PX4-Autopilot && PX4_GZ_WORLD=eletroquad26_m3 make px4_sitl gz_harpia",
 
     # Start QGroundControl
     'cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=${DISPLAY} /usr/local/bin/QGroundControl.AppImage"',
