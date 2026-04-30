@@ -11,11 +11,12 @@ START_MICROXRCE_AGENT="MicroXRCEAgent udp4 -p 8888"
 START_QGC='cd /root/harpia_ws/ && runuser -l harpia -c "DISPLAY=${DISPLAY} /usr/local/bin/QGroundControl.AppImage"'
 START_PX4='cd /root/PX4-Autopilot && PX4_GZ_WORLD=eletroquad26_m3 make px4_sitl gz_harpia'
 START_BRIDGE="ros2 launch simulation_bringup ros_gz_bridge.launch.py"
+START_RQT="rqt"
 
 # Check if the tmux session already exists
 if tmux has-session -t $SESSION 2>/dev/null; then
     echo "Session $SESSION already exists. Attaching to it..."
-    tmux attach-session -t $SESSION
+    gnome-terminal -- tmux attach-session -t $SESSION
     exit 0
 fi
 
@@ -28,6 +29,7 @@ tmux new-window -d -t $SESSION -n $WINDOW_2
 tmux split-window -h -t $SESSION:$WINDOW_1
 tmux split-window -v -t $SESSION:$WINDOW_1.0
 tmux split-window -v -t $SESSION:$WINDOW_1.2
+tmux split-window -v -t $SESSION:$WINDOW_1.3
 tmux select-layout -t $SESSION:$WINDOW_1 tiled
 
 # Send commands to the respective panes in the sim-essentials window
@@ -35,7 +37,8 @@ tmux send-keys -t $SESSION:$WINDOW_1.0 "$START_MICROXRCE_AGENT" C-m
 tmux send-keys -t $SESSION:$WINDOW_1.1 "$START_PX4" C-m
 tmux send-keys -t $SESSION:$WINDOW_1.2 "$START_QGC" C-m
 tmux send-keys -t $SESSION:$WINDOW_1.3 "$START_BRIDGE" C-m
+tmux send-keys -t $SESSION:$WINDOW_1.4 "$START_RQT" C-m
 
 #Attach to the session
 tmux select-window -t $SESSION:$WINDOW_0
-tmux attach-session -t $SESSION
+gnome-terminal -- tmux attach-session -t $SESSION
